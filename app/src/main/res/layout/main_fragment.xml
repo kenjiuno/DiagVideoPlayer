@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.main.MainFragment">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="jp.kenjiuno.ui.main.MainViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff">
+
+        <TextView
+            android:id="@+id/urlLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="URL:" />
+
+        <EditText
+            android:id="@+id/urlEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/urlLabel"
+            android:inputType="textUri"
+            android:text="@={viewModel.url}" />
+
+        <Button
+            android:id="@+id/playIt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/urlEdit"
+            android:onClick="@{()->viewModel.playIt()}"
+            android:text="再生" />
+
+        <com.google.android.exoplayer2.ui.StyledPlayerView
+            android:id="@+id/player"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/playIt"
+            android:background="#aaa">
+
+        </com.google.android.exoplayer2.ui.StyledPlayerView>
+
+    </RelativeLayout>
+</layout>
